@@ -1,14 +1,9 @@
 import socket
-sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
-sock.bind (('172.17.9.193',5050))
-client = []
-print ('Start Server')
-while 1 :
-         data , addres = sock.recvfrom(1024)
-         print (addres[0], addres[1])
-         if  addres not in client :
-                 client.append(addres)
-         for clients in client :
-                 if clients == adress :
-                     continue
-                 sock.sendto(data,clients)
+
+SERVER_ADDRESS = ('localhost', 8125)
+
+server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+server_socket.bind(SERVER_ADDRESS)
+clients = []
+members = {}
+print("Server is running")
