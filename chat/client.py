@@ -1,19 +1,11 @@
 import socket
-import threading
 
-SERVER_ADDRESS = ('172.17.9.193', 8125)
-sor = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-sor.bind(('', 0))
-sor.sendto(('Connect to server').encode('utf-8'), SERVER_ADDRESS)
+HOST = '172.17.9.193'  # The server's hostname or IP address
+PORT = 65432        # The port used by the server
 
-def reading_socket():
-    while True:
-        data = sor.recv(1024)
-        print(data.decode('utf-8'))
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    s.connect((HOST, PORT))
+    s.sendall(b'Hello, world')
+    data = s.recv(1024)
 
-potok = threading.Thread(target=reading_socket)
-potok.start()
-
-while True:
-    message = input()
-    sor.sendto((message).encode('utf-8'), SERVER_ADDRESS)
+print('Received', repr(data))
