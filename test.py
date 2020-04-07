@@ -1,5 +1,5 @@
-import math
-var_a = int(input("input any natural number: "))
-while var_a < 10:
-    print("You input number: ", var_a)
-    var_a +=1
+age = 25
+f_name = "Vasya"
+l_name = "Churkin"
+full_name = (f_name + " " + l_name)
+print(full_name + " " + str(age))
